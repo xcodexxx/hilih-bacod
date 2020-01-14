@@ -1,4 +1,9 @@
-# bacod-generator
+# Bacod Generator
+
+## Aplikasi Generate / Convert huruf vokal menjadi " i "
+```
+Made with VueJS
+```
 
 ## Project setup
 ```
