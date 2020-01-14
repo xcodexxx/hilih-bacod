@@ -6,7 +6,7 @@
                     Bacod Generator
                 </h3>
                 <h5>
-                    a, i, u, e, o == i
+                    {{ description }}
                 </h5>
                 <h4>
                     by <a target="_blank" href="https://instagram.com/ricez_">Ric Ez</a>
@@ -22,6 +22,17 @@
             </div>
         </div>
 
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <button @click="changeType('bacod', 'Convert (a, u, e, o) => i')" v-bind:class="[type === 'bacod' ? 'btn-primary' : 'btn-outline-primary']" class="btn mx-1 font-weight-bold" style="letter-spacing: 2px;">
+                    hilih
+                </button>
+                <button @click="changeType('byksw', 'bahasa para byksw')" v-bind:class="[type === 'byksw' ? 'btn-primary' : 'btn-outline-primary']" class="btn mx-1 font-weight-bold" style="letter-spacing: 2px;">
+                    Byksw
+                </button>
+            </div>
+        </div>
+
         <div class="row justify-content-center" style="font-size: 30px;">
             <div class="col-md-6">
                 <div class="card">
@@ -32,7 +43,7 @@
                         </button>
                     </div>
                     <!-- <div class="form-group card-body"> -->
-                        <textarea placeholder="hilih" id="bacod" v-model="this.generatedBacod" cols="30" rows="2" class="form-control" style="font-size: 30px;"></textarea>
+                        <textarea placeholder="hilih" id="bacod" v-model="this.generated" cols="30" rows="2" class="form-control" style="font-size: 30px;"></textarea>
                     <!-- </div> -->
                 </div>
             </div>
@@ -44,12 +55,38 @@
 export default {
     data(){
         return{
+            type: 'bacod', 
+            description: 'Convert (a, u, e, o) => i', 
             bacod: ''
         }
     }, 
+    methods: {
+        changeType(type, description){
+            this.type = type
+            this.description = description
+        }
+    },
     computed: {
-        generatedBacod(){
-            return this.bacod.replace(/a|i|u|e|o/gi, 'i')
+        generated(){
+            let res
+            switch (this.type) {
+                case 'bacod':
+                    res = this.bacod.replace(/a|i|u|e|o/gi, 'i');
+                    break;
+                case 'byksw':
+                    res = 
+                    this.bacod
+                    .replace(/i/gi, 'y')
+                    .replace(/e/gi, 'w')
+                    .replace(/o/gi, 'w')
+                    .replace(/a/gi, 'w')
+                    .replace(/u/gi, 'w')
+                    break;
+                default:
+                    res = this.bacod.replace(/a|i|u|e|o/gi, 'i');
+                    break;
+            }
+            return res
         }
     }
 }   
