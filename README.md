@@ -2,7 +2,7 @@
 
 ## Aplikasi untuk Generate / Convert huruf vokal menjadi huruf " i "
 ```
-Made with VueJS
+Made using VueJS
 ```
 
 ## Project setup
